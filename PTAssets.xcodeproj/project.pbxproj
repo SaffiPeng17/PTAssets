@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EED889298C573C0092B93F /* AppDelegate.swift */; };
 		04EED88C298C573C0092B93F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EED88B298C573C0092B93F /* SceneDelegate.swift */; };
-		04EED88E298C573C0092B93F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EED88D298C573C0092B93F /* ViewController.swift */; };
+		04EED88E298C573C0092B93F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EED88D298C573C0092B93F /* MainViewController.swift */; };
 		04EED891298C573C0092B93F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EED88F298C573C0092B93F /* Main.storyboard */; };
 		04EED893298C573E0092B93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EED892298C573E0092B93F /* Assets.xcassets */; };
 		04EED896298C573E0092B93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EED894298C573E0092B93F /* LaunchScreen.storyboard */; };
@@ -42,7 +42,7 @@
 		04EED886298C573C0092B93F /* PTAssets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTAssets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EED889298C573C0092B93F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04EED88B298C573C0092B93F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04EED88D298C573C0092B93F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04EED88D298C573C0092B93F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		04EED890298C573C0092B93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04EED892298C573E0092B93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04EED895298C573E0092B93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,6 +91,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0447A7FF298CF9CA001FF53F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0447A800298CF9D8001FF53F /* Storyboard */,
+				04EED892298C573E0092B93F /* Assets.xcassets */,
+				04EED897298C573E0092B93F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0447A800298CF9D8001FF53F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				04EED88F298C573C0092B93F /* Main.storyboard */,
+				04EED894298C573E0092B93F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		0447A801298CFA04001FF53F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0447A802298CFA20001FF53F /* Home */,
+				0447A803298CFA25001FF53F /* Detail */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0447A802298CFA20001FF53F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				04EED88D298C573C0092B93F /* MainViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0447A803298CFA25001FF53F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		04EED87D298C573C0092B93F = {
 			isa = PBXGroup;
 			children = (
@@ -118,11 +161,8 @@
 			children = (
 				04EED889298C573C0092B93F /* AppDelegate.swift */,
 				04EED88B298C573C0092B93F /* SceneDelegate.swift */,
-				04EED88D298C573C0092B93F /* ViewController.swift */,
-				04EED88F298C573C0092B93F /* Main.storyboard */,
-				04EED892298C573E0092B93F /* Assets.xcassets */,
-				04EED894298C573E0092B93F /* LaunchScreen.storyboard */,
-				04EED897298C573E0092B93F /* Info.plist */,
+				0447A801298CFA04001FF53F /* Modules */,
+				0447A7FF298CF9CA001FF53F /* Resources */,
 			);
 			path = PTAssets;
 			sourceTree = "<group>";
@@ -164,7 +204,6 @@
 				127F21575632092842303A84 /* Pods-PTAssetsTests.debug.xcconfig */,
 				B3E76E0C1A0D45B04DDB185C /* Pods-PTAssetsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -407,7 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04EED88E298C573C0092B93F /* ViewController.swift in Sources */,
+				04EED88E298C573C0092B93F /* MainViewController.swift in Sources */,
 				04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */,
 				04EED88C298C573C0092B93F /* SceneDelegate.swift in Sources */,
 			);
@@ -587,11 +626,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24Q774U2FS;
+				DEVELOPMENT_TEAM = 9QU6SLZLG8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PTAssets/Info.plist;
+				INFOPLIST_FILE = PTAssets/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Home.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -616,11 +655,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24Q774U2FS;
+				DEVELOPMENT_TEAM = 9QU6SLZLG8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PTAssets/Info.plist;
+				INFOPLIST_FILE = PTAssets/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Home.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -727,7 +766,7 @@
 				04EED8AF298C573E0092B93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		04EED8B0298C573E0092B93F /* Build configuration list for PBXNativeTarget "PTAssets" */ = {
 			isa = XCConfigurationList;
@@ -736,7 +775,7 @@
 				04EED8B2298C573E0092B93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		04EED8B3298C573E0092B93F /* Build configuration list for PBXNativeTarget "PTAssetsTests" */ = {
 			isa = XCConfigurationList;
@@ -745,7 +784,7 @@
 				04EED8B5298C573E0092B93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		04EED8B6298C573E0092B93F /* Build configuration list for PBXNativeTarget "PTAssetsUITests" */ = {
 			isa = XCConfigurationList;
@@ -754,7 +793,7 @@
 				04EED8B8298C573E0092B93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
