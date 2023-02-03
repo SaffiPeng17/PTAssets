@@ -1,0 +1,54 @@
+PODS:
+  - Alamofire (5.5.0)
+  - CocoaLumberjack (3.8.0):
+    - CocoaLumberjack/Core (= 3.8.0)
+  - CocoaLumberjack/Core (3.8.0)
+  - Kingfisher (7.2.0)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - SnapKit (5.0.1)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
+
+DEPENDENCIES:
+  - Kingfisher
+  - Moya (~> 15.0)
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - SVGKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CocoaLumberjack
+    - Kingfisher
+    - Moya
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - SVGKit
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  CocoaLumberjack: 78abfb691154e2a9df8ded4350d504ee19d90732
+  Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
+
+PODFILE CHECKSUM: 5caca91b246f56eabd23942de72e9a2df8610bed
+
+COCOAPODS: 1.11.3
