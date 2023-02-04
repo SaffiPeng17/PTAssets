@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0447A821298D4BD7001FF53F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A820298D4BD7001FF53F /* DetailViewController.swift */; };
+		0447A825298D4C46001FF53F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A824298D4C46001FF53F /* DetailViewModel.swift */; };
 		0447A82C298D5F1A001FF53F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A82B298D5F1A001FF53F /* MainCoordinator.swift */; };
 		0447A831298E214B001FF53F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A830298E214B001FF53F /* Coordinator.swift */; };
 		0447A833298E21FC001FF53F /* MainCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A832298E21FC001FF53F /* MainCoordinatorFactory.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0447A820298D4BD7001FF53F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0447A824298D4C46001FF53F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		0447A82B298D5F1A001FF53F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		0447A830298E214B001FF53F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0447A832298E21FC001FF53F /* MainCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -116,8 +120,8 @@
 		0447A801298CFA04001FF53F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0447A803298CFA25001FF53F /* Detail */,
 				0447A802298CFA20001FF53F /* Main */,
+				0447A803298CFA25001FF53F /* Detail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -133,8 +137,18 @@
 		0447A803298CFA25001FF53F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				0447A81F298D4BC1001FF53F /* Views */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		0447A81F298D4BC1001FF53F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0447A820298D4BD7001FF53F /* DetailViewController.swift */,
+				0447A824298D4C46001FF53F /* DetailViewModel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0447A826298D5E8A001FF53F /* Coordinator */ = {
@@ -477,9 +491,11 @@
 			files = (
 				0447A831298E214B001FF53F /* Coordinator.swift in Sources */,
 				0447A82C298D5F1A001FF53F /* MainCoordinator.swift in Sources */,
+				0447A821298D4BD7001FF53F /* DetailViewController.swift in Sources */,
 				0447A846298EE1B4001FF53F /* MainViewModel.swift in Sources */,
 				04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */,
 				0447A845298EE1B4001FF53F /* MainViewController.swift in Sources */,
+				0447A825298D4C46001FF53F /* DetailViewModel.swift in Sources */,
 				0447A833298E21FC001FF53F /* MainCoordinatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
