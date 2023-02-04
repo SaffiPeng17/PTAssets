@@ -111,18 +111,18 @@
 		0447A801298CFA04001FF53F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0447A802298CFA20001FF53F /* Home */,
 				0447A803298CFA25001FF53F /* Detail */,
+				0447A802298CFA20001FF53F /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		0447A802298CFA20001FF53F /* Home */ = {
+		0447A802298CFA20001FF53F /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				04EED88D298C573C0092B93F /* MainViewController.swift */,
 			);
-			path = Home;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		0447A803298CFA25001FF53F /* Detail */ = {

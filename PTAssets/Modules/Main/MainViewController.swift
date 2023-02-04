@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
             make.center.equalToSuperview()
         }
 
-        label.text = "aaaaaaaaAAAAAAAA"
+        label.text = "Main view"
     }
 
 
