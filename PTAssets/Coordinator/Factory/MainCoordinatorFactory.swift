@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainCoordinatorFactoryProtocol {
     func makeMainViewController() -> MainViewController
+    func makeDetailViewController() -> DetailViewController
 }
 
 struct MainCoordinatorFactory: MainCoordinatorFactoryProtocol {
@@ -17,5 +18,10 @@ struct MainCoordinatorFactory: MainCoordinatorFactoryProtocol {
     func makeMainViewController() -> MainViewController {
         let vm = MainViewModel()
         return MainViewController(viewModel: vm)
+    }
+
+    func makeDetailViewController() -> DetailViewController {
+        let vm = DetailViewModel()
+        return DetailViewController(viewModel: vm)
     }
 }

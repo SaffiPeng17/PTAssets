@@ -27,4 +27,11 @@ final class MainCoordinator: Coordinator {
 
         navigationController.viewControllers = [mainVC]
     }
+
+    func showDetailView() {
+        let detailVC = factory.makeDetailViewController()
+        detailVC.coordinator = self
+
+        navigationController.pushViewController(detailVC, animated: true)
+    }
 }
