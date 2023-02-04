@@ -11,6 +11,8 @@ import SnapKit
 final class MainViewController: UIViewController {
 
     // MARK: - Properties
+    weak var coordinator: MainCoordinator?
+
     private let viewModel: MainViewModel
 
     // MARK: - Subviews
@@ -33,6 +35,8 @@ final class MainViewController: UIViewController {
 // MARK: - 🔒 Private methods
 private extension MainViewController {
     func setupViews() {
+        title = "List"
+
         view.backgroundColor = .systemBackground
 
         view.addSubview(button)
