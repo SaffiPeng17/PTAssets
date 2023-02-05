@@ -44,8 +44,8 @@ struct NetworkManager {
     }
 
     static func request<T: Mappable>(_ service: APIService) -> Observable<APIResult<T>> {
-        Observable.create { observer in
-            NetworkManager.request(service) { (result: APIResult<T>) in
+        .create { observer in
+            NetworkManager.request(service) { result in
                 observer.onNext(result)
                 observer.onCompleted()
             }

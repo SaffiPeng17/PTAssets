@@ -9,13 +9,19 @@ import Foundation
 import Moya
 
 enum APIService {
+    case getAssets(address: String, offset: Int, limit: Int)
 }
 
 extension APIService: TargetType {
     var baseURL: URL {
+        URL(string: AppConfig.API.baseURL)!
     }
 
     var path: String {
+        switch self {
+        case .getAssets:
+            return "/api/v1/assets"
+        }
     }
 
     var method: Moya.Method {
@@ -29,6 +35,10 @@ extension APIService: TargetType {
 
     var parameters: [String: Any]? {
         switch self {
+        case .getAssets(let address, let offset, let limit):
+            return ["owner": address,
+                    "offset": offset,
+                    "limit": limit]
         default:
             return nil
         }
