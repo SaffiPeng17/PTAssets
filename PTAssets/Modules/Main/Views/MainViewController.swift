@@ -58,5 +58,17 @@ private extension MainViewController {
             .subscribe(onNext: { owner, _ in
                 owner.coordinator?.showDetailView()
             }).disposed(by: disposeBag)
+
+        viewModel.rx.onUpdateView
+            .drive(onNext: { [weak self] in
+                // TODO: reload table
+                print("fetch asset success")
+            }).disposed(by: disposeBag)
+
+        viewModel.rx.onShowError
+            .drive(onNext: { [weak self] error in
+                // TODO: show error alert
+                print("error =", error)
+            }).disposed(by: disposeBag)
     }
 }
