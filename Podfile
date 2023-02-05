@@ -8,6 +8,7 @@ target 'PTAssets' do
   # Pods for PTAssets
   pod 'SnapKit'
   pod 'Moya', '~> 15.0'
+  pod 'ObjectMapper'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Kingfisher'
