@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import RxSwift
 
 final class DetailViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
+    private let disposeBag = DisposeBag()
 
     // MARK: - Properties
+    weak var coordinator: MainCoordinator?
     private let viewModel: DetailViewModel
 
     // MARK: - Subviews
+    private let footerView = AssetFooterView()
     private var contentView: UITableView = {
         let view = UITableView()
         view.contentInset = .init(top: 16, left: 0, bottom: 20, right: 0)
@@ -34,6 +37,7 @@ final class DetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         setupViews()
+        setupBinding()
     }
 
     required init?(coder: NSCoder) {
@@ -79,5 +83,10 @@ private extension DetailViewController {
         }
     }
 
+    func setupBinding() {
+        footerView.rx.onOpenLink
+            .subscribe(onNext: { [weak self] in
+                // TODO: open link
+            }).disposed(by: disposeBag)
     }
 }
