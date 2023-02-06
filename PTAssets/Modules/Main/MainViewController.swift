@@ -79,7 +79,7 @@ private extension MainViewController {
         title = "Asset List"
         view.backgroundColor = .systemBackground
 
-        collectionView.register(AssetListCell.self, forCellWithReuseIdentifier: AssetListCell.cellID)
+        collectionView.register(AssetListCell.self)
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaInsets.top)
