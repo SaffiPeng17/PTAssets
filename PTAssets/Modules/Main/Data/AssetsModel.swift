@@ -1,5 +1,5 @@
 //
-//  AssetsResponse.swift
+//  AssetsModel.swift
 //  PTAssets
 //
 //  Created by Saffi on 2023/2/5.
