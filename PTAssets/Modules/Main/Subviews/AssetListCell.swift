@@ -78,7 +78,7 @@ private extension AssetListCell {
         imageView.layer.cornerRadius = 6
         bgView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview().inset(6)
+            make.top.leading.trailing.equalToSuperview().inset(14)
             make.height.equalTo(imageView.snp.width)
         }
 

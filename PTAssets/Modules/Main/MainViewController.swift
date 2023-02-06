@@ -82,9 +82,8 @@ private extension MainViewController {
         collectionView.register(AssetListCell.self)
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaInsets.top)
+            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaInsets.bottom)
         }
     }
 
