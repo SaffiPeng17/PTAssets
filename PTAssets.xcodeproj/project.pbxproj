@@ -21,6 +21,7 @@
 		0447A850298FCF18001FF53F /* AssetsRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A84F298FCF18001FF53F /* AssetsRequests.swift */; };
 		0447A854298FD00E001FF53F /* AssetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A853298FD00E001FF53F /* AssetsResponse.swift */; };
 		0447A856298FFB8B001FF53F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A855298FFB8B001FF53F /* AppConfig.swift */; };
+		0447A861299041FF001FF53F /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A860299041FF001FF53F /* UICollectionView+Extension.swift */; };
 		04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EED889298C573C0092B93F /* AppDelegate.swift */; };
 		04EED893298C573E0092B93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EED892298C573E0092B93F /* Assets.xcassets */; };
 		04EED896298C573E0092B93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EED894298C573E0092B93F /* LaunchScreen.storyboard */; };
@@ -64,6 +65,7 @@
 		0447A84F298FCF18001FF53F /* AssetsRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsRequests.swift; sourceTree = "<group>"; };
 		0447A853298FD00E001FF53F /* AssetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsResponse.swift; sourceTree = "<group>"; };
 		0447A855298FFB8B001FF53F /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		0447A860299041FF001FF53F /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		04EED886298C573C0092B93F /* PTAssets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTAssets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EED889298C573C0092B93F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04EED892298C573E0092B93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,6 +239,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		0447A85F299041A2001FF53F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0447A860299041FF001FF53F /* UICollectionView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		04EED87D298C573C0092B93F = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +274,7 @@
 			children = (
 				04EED889298C573C0092B93F /* AppDelegate.swift */,
 				0447A857298FFB98001FF53F /* Utility */,
+				0447A85F299041A2001FF53F /* Extensions */,
 				0447A847298EF350001FF53F /* Network */,
 				0447A826298D5E8A001FF53F /* Coordinator */,
 				0447A801298CFA04001FF53F /* Modules */,
@@ -558,6 +569,7 @@
 				0407B5D42990EBF000BFA021 /* AssetListCell.swift in Sources */,
 				0447A850298FCF18001FF53F /* AssetsRequests.swift in Sources */,
 				0447A854298FD00E001FF53F /* AssetsResponse.swift in Sources */,
+				0447A861299041FF001FF53F /* UICollectionView+Extension.swift in Sources */,
 				0447A846298EE1B4001FF53F /* MainViewModel.swift in Sources */,
 				04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */,
 				0447A845298EE1B4001FF53F /* MainViewController.swift in Sources */,
