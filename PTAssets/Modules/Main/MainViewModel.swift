@@ -36,6 +36,7 @@ final class MainViewModel: ReactiveCompatible {
 
     private var currentAssets: [AssetModel] = []
 
+    // MARK: - Initial
     init() {
         fetchAssetData()
     }

@@ -12,6 +12,7 @@ final class DetailViewModel {
     // MARK: - Properties
     let asset: AssetModel
 
+    // MARK: - Initial
     init(asset: AssetModel) {
         self.asset = asset
     }

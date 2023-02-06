@@ -86,7 +86,11 @@ private extension DetailViewController {
     func setupBinding() {
         footerView.rx.onOpenLink
             .subscribe(onNext: { [weak self] in
-                // TODO: open link
+                guard let self = self else { return }
+                let permaLink = self.viewModel.asset.permalink
+                if let url = URL(string: permaLink) {
+                    UIApplication.shared.open(url)
+                }
             }).disposed(by: disposeBag)
     }
 }
