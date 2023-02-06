@@ -22,14 +22,14 @@ final class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let mainVC = factory.makeMainViewController()
+        let mainVC = factory.makeMainView()
         mainVC.coordinator = self
 
         navigationController.viewControllers = [mainVC]
     }
 
-    func showDetailView() {
-        let detailVC = factory.makeDetailViewController()
+    func showDetailView(asset: AssetModel) {
+        let detailVC = factory.makeDetailView(asset: asset)
         detailVC.coordinator = self
 
         navigationController.pushViewController(detailVC, animated: true)

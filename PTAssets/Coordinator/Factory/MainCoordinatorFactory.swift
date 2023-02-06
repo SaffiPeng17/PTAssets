@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 
 protocol MainCoordinatorFactoryProtocol {
-    func makeMainViewController() -> MainViewController
-    func makeDetailViewController() -> DetailViewController
+    func makeMainView() -> MainViewController
+    func makeDetailView(asset: AssetModel) -> DetailViewController
 }
 
 struct MainCoordinatorFactory: MainCoordinatorFactoryProtocol {
 
-    func makeMainViewController() -> MainViewController {
+    func makeMainView() -> MainViewController {
         let vm = MainViewModel()
         return MainViewController(viewModel: vm)
     }
 
-    func makeDetailViewController() -> DetailViewController {
-        let vm = DetailViewModel()
+    func makeDetailView(asset: AssetModel) -> DetailViewController {
+        let vm = DetailViewModel(asset: asset)
         return DetailViewController(viewModel: vm)
     }
 }

@@ -9,7 +9,10 @@ import Foundation
 
 final class DetailViewModel {
 
-    init() {
-        
+    // MARK: - Properties
+    let asset: AssetModel
+
+    init(asset: AssetModel) {
+        self.asset = asset
     }
 }
