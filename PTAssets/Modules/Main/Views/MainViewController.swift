@@ -19,7 +19,32 @@ final class MainViewController: UIViewController {
     private let viewModel: MainViewModel
 
     // MARK: - Subviews
-    private let button = UIButton()
+    private var collectionView: UICollectionView = {
+        let itemHorizontalSpacing: CGFloat = 14
+        let itemVerticalSpacing: CGFloat = 20
+        let contentInset: CGFloat = 16
+        let imageTextSpacing: CGFloat = 4
+        let textHeight: CGFloat = 30
+
+        var flowLayout: UICollectionViewFlowLayout {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            layout.minimumInteritemSpacing = itemHorizontalSpacing
+            layout.minimumLineSpacing = itemVerticalSpacing
+
+            let width = (UIScreen.main.bounds.width - contentInset * 2 - itemHorizontalSpacing) / 2
+            let height = width + imageTextSpacing + textHeight
+            layout.itemSize = .init(width: width, height: height)
+            return layout
+        }
+
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.alwaysBounceVertical = true
+        view.showsVerticalScrollIndicator = false
+        view.contentInset = .init(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
+
+        return view
+    }()
 
     // MARK: - Initial
     init(viewModel: MainViewModel) {
@@ -39,26 +64,19 @@ final class MainViewController: UIViewController {
 // MARK: - 🔒 Private methods
 private extension MainViewController {
     func setupViews() {
-        title = "List"
-
+        title = "Asset List"
         view.backgroundColor = .systemBackground
 
-        view.addSubview(button)
-        button.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        collectionView.register(AssetListCell.self, forCellWithReuseIdentifier: AssetListCell.cellID)
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaInsets.top)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaInsets.bottom)
         }
-
-        button.setTitle("Go Detail", for: .normal)
-        button.setTitleColor(.black, for: .normal)
     }
 
     func setupBinding() {
-        button.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.coordinator?.showDetailView()
-            }).disposed(by: disposeBag)
-
         viewModel.rx.onUpdateView
             .drive(onNext: { [weak self] in
                 // TODO: reload table
