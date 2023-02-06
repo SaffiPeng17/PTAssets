@@ -22,7 +22,7 @@ struct AssetsResponse: Mappable {
     }
 }
 
-struct AssetModel: Mappable {
+struct AssetModel: Mappable, Hashable {
     var imageURL = ""
     var name = ""
     var collectionName = ""

@@ -17,6 +17,7 @@ final class MainViewController: UIViewController {
     weak var coordinator: MainCoordinator?
 
     private let viewModel: MainViewModel
+    private var assetDataSource: UICollectionViewDiffableDataSource<AssetItemSection, AnyHashable>!
 
     // MARK: - Subviews
     private var collectionView: UICollectionView = {
@@ -52,6 +53,8 @@ final class MainViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
 
+        assetDataSource = makeDataSource()
+
         setupViews()
         setupBinding()
     }
@@ -77,10 +80,9 @@ private extension MainViewController {
     }
 
     func setupBinding() {
-        viewModel.rx.onUpdateView
-            .drive(onNext: { [weak self] in
-                // TODO: reload table
-                print("fetch asset success")
+        viewModel.rx.snapshot
+            .drive(onNext: { [weak self] snapshot in
+                self?.assetDataSource.apply(snapshot, animatingDifferences: true)
             }).disposed(by: disposeBag)
 
         viewModel.rx.onShowError
@@ -88,5 +90,28 @@ private extension MainViewController {
                 // TODO: show error alert
                 print("error =", error)
             }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Handle data source
+private extension MainViewController {
+    func makeDataSource() -> UICollectionViewDiffableDataSource<AssetItemSection, AnyHashable> {
+        UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, model in
+            switch model {
+            case let item as AssetModel:
+                let cell = collectionView.dequeueReusableCell(AssetListCell.self, for: indexPath)
+                cell.configureCell(with: item)
+
+                cell.rx.onTap
+                    .drive(onNext: { [weak self] model in
+                        self?.coordinator?.showDetailView(asset: model)
+                    }).disposed(by: cell.disposeBag)
+
+                return cell
+
+            default:
+                return nil
+            }
+        }
     }
 }

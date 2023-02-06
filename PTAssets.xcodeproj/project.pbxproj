@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0407B5D42990EBF000BFA021 /* AssetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B5D32990EBF000BFA021 /* AssetListCell.swift */; };
+		0407B5D62990EC0000BFA021 /* AssetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B5D52990EC0000BFA021 /* AssetDataSource.swift */; };
 		0447A821298D4BD7001FF53F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A820298D4BD7001FF53F /* DetailViewController.swift */; };
 		0447A825298D4C46001FF53F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A824298D4C46001FF53F /* DetailViewModel.swift */; };
 		0447A82C298D5F1A001FF53F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A82B298D5F1A001FF53F /* MainCoordinator.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		0407B5D32990EBF000BFA021 /* AssetListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetListCell.swift; sourceTree = "<group>"; };
+		0407B5D52990EC0000BFA021 /* AssetDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetDataSource.swift; sourceTree = "<group>"; };
 		0447A820298D4BD7001FF53F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0447A824298D4C46001FF53F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		0447A82B298D5F1A001FF53F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				0447A843298EE1B4001FF53F /* MainViewController.swift */,
 				0447A844298EE1B4001FF53F /* MainViewModel.swift */,
+				0407B5D52990EC0000BFA021 /* AssetDataSource.swift */,
 				0407B5D22990EBF000BFA021 /* Subviews */,
 			);
 			path = Views;
@@ -570,6 +573,7 @@
 				0447A850298FCF18001FF53F /* AssetsRequests.swift in Sources */,
 				0447A854298FD00E001FF53F /* AssetsResponse.swift in Sources */,
 				0447A861299041FF001FF53F /* UICollectionView+Extension.swift in Sources */,
+				0407B5D62990EC0000BFA021 /* AssetDataSource.swift in Sources */,
 				0447A846298EE1B4001FF53F /* MainViewModel.swift in Sources */,
 				04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */,
 				0447A845298EE1B4001FF53F /* MainViewController.swift in Sources */,
