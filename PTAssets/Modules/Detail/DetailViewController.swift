@@ -30,7 +30,7 @@ final class DetailViewController: UIViewController {
 // MARK: - 🔒 Private methods
 private extension DetailViewController {
     func setupViews() {
-        title = "Detail"
+        title = viewModel.asset.collectionName
 
         view.backgroundColor = .systemBackground
         
