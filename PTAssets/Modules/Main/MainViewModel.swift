@@ -9,47 +9,39 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-extension Reactive where Base: MainViewModel {
-    var onUpdateView: Driver<Void> {
-        base.updateViewsRelay.asDriver(onErrorDriveWith: .empty())
-    }
-
-    var onShowError: Driver<APIError> {
-        base.showErrorRelay.asDriver(onErrorDriveWith: .empty())
-    }
-}
-
-typealias AssetDataSource = UICollectionViewDiffableDataSource<AssetItemSection, AnyHashable>
-typealias AssetSnapshot = NSDiffableDataSourceSnapshot<AssetItemSection, AnyHashable>
-
 final class MainViewModel: ReactiveCompatible {
     private let disposeBag = DisposeBag()
 
+    // MARK: In & Out control
+    struct Input {
+        let onLoadMore: AnyObserver<Void>
+    }
+
+    struct Output {
+        let onReloadData: Driver<Void>
+        let onShowError: Driver<APIError>
+    }
+
+    private let loadMoreSubject = PublishSubject<Void>()
+    private let reloadDataSubject = PublishSubject<Void>()
+    private let showErrorSubject = PublishSubject<APIError>()
+
+    let input: Input
+    let output: Output
+
     // MARK: - Properties
-    fileprivate let updateViewsRelay = PublishSubject<Void>()
-    fileprivate let showErrorRelay = PublishSubject<APIError>()
-
-    let onLoadMore = PublishSubject<Void>()
-
     private(set) var assets: [AssetModel] = []
-
-    // for protect not request API more than once
-    private var isDataLoading = false
+    private var isDataLoading = false // for protect not request API more than once
 
     // MARK: - Initial
     init() {
+        input = Input(onLoadMore: loadMoreSubject.asObserver())
+
+        output = Output(onReloadData: reloadDataSubject.asDriver(onErrorDriveWith: .empty()),
+                        onShowError: showErrorSubject.asDriver(onErrorDriveWith: .empty()))
+
         getAssetData()
         setupBinding()
-    }
-
-    private func setupBinding() {
-        onLoadMore
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                guard !owner.isDataLoading else { return }
-                owner.isDataLoading = true
-                owner.getAssetData()
-            }).disposed(by: disposeBag)
     }
 }
 
@@ -69,12 +61,24 @@ private extension MainViewModel {
                 switch result {
                 case .success(let response):
                     owner.assets += response.assets
-                    owner.updateViewsRelay.onNext(())
+                    owner.reloadDataSubject.onNext(())
 
                 case .failure(let error):
-                    owner.showErrorRelay.onNext(error)
+                    owner.showErrorSubject.onNext(error)
                 }
                 owner.isDataLoading = false
+            }).disposed(by: disposeBag)
+    }
+
+    func setupBinding() {
+        loadMoreSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard !owner.isDataLoading else {
+                    return
+                }
+                owner.isDataLoading = true
+                owner.getAssetData()
             }).disposed(by: disposeBag)
     }
 }

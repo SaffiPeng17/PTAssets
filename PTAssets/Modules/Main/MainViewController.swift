@@ -98,12 +98,12 @@ private extension MainViewController {
     }
 
     func setupBinding() {
-        viewModel.rx.onUpdateView
+        viewModel.output.onReloadData
             .drive(onNext: { [weak self] in
                 self?.collectionView.reloadData()
             }).disposed(by: disposeBag)
 
-        viewModel.rx.onShowError
+        viewModel.output.onShowError
             .drive(onNext: { [weak self] error in
                 // TODO: show error alert
                 print("error =", error)
@@ -148,6 +148,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard elementKind == UICollectionView.elementKindSectionFooter else {
             return
         }
-        viewModel.onLoadMore.onNext(())
+        viewModel.input.onLoadMore.onNext(())
     }
 }
