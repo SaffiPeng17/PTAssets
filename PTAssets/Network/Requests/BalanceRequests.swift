@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol BalanceRequestsProtocol {
     static func getBalance() -> Observable<APIResult<BalanceModel>>
@@ -13,7 +14,7 @@ protocol BalanceRequestsProtocol {
 
 extension NetworkManager: BalanceRequestsProtocol {
     /**
-     Fetch assets from API
+     Fetch balance through RPC
 
      - Returns:
         Return balance model
