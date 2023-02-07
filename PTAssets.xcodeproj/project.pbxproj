@@ -13,6 +13,8 @@
 		0407B61C299153C800BFA021 /* AssetDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B61B299153C800BFA021 /* AssetDetailCell.swift */; };
 		0407B620299169D700BFA021 /* AssetFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B61F299169D700BFA021 /* AssetFooterView.swift */; };
 		0407B6262991991500BFA021 /* IndicatorFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B6252991991500BFA021 /* IndicatorFooterView.swift */; };
+		0407B63229928F3B00BFA021 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B63129928F3B00BFA021 /* BalanceModel.swift */; };
+		0407B6362992CFBF00BFA021 /* BalanceRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B6352992CFBF00BFA021 /* BalanceRequests.swift */; };
 		0447A821298D4BD7001FF53F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A820298D4BD7001FF53F /* DetailViewController.swift */; };
 		0447A825298D4C46001FF53F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A824298D4C46001FF53F /* DetailViewModel.swift */; };
 		0447A82C298D5F1A001FF53F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A82B298D5F1A001FF53F /* MainCoordinator.swift */; };
@@ -62,6 +64,8 @@
 		0407B61B299153C800BFA021 /* AssetDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailCell.swift; sourceTree = "<group>"; };
 		0407B61F299169D700BFA021 /* AssetFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetFooterView.swift; sourceTree = "<group>"; };
 		0407B6252991991500BFA021 /* IndicatorFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorFooterView.swift; sourceTree = "<group>"; };
+		0407B63129928F3B00BFA021 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
+		0407B6352992CFBF00BFA021 /* BalanceRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceRequests.swift; sourceTree = "<group>"; };
 		0447A820298D4BD7001FF53F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0447A824298D4C46001FF53F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		0447A82B298D5F1A001FF53F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			children = (
 				0407B5D52990EC0000BFA021 /* AssetDataSource.swift */,
 				0447A853298FD00E001FF53F /* AssetsModel.swift */,
+				0407B63129928F3B00BFA021 /* BalanceModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				0447A84F298FCF18001FF53F /* AssetsRequests.swift */,
+				0407B6352992CFBF00BFA021 /* BalanceRequests.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 			files = (
 				0447A831298E214B001FF53F /* Coordinator.swift in Sources */,
 				0407B620299169D700BFA021 /* AssetFooterView.swift in Sources */,
+				0407B6362992CFBF00BFA021 /* BalanceRequests.swift in Sources */,
 				0447A82C298D5F1A001FF53F /* MainCoordinator.swift in Sources */,
 				0407B6172991472A00BFA021 /* UITableView+Extension.swift in Sources */,
 				0447A84B298FB4E7001FF53F /* NetworkManager.swift in Sources */,
@@ -586,6 +593,7 @@
 				04EED88A298C573C0092B93F /* AppDelegate.swift in Sources */,
 				0447A845298EE1B4001FF53F /* MainViewController.swift in Sources */,
 				0447A825298D4C46001FF53F /* DetailViewModel.swift in Sources */,
+				0407B63229928F3B00BFA021 /* BalanceModel.swift in Sources */,
 				0447A849298EF610001FF53F /* APIService.swift in Sources */,
 				0447A833298E21FC001FF53F /* MainCoordinatorFactory.swift in Sources */,
 				0447A84D298FB985001FF53F /* APIError.swift in Sources */,

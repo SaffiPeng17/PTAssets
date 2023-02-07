@@ -13,6 +13,8 @@ enum AppConfig {
     enum API {
         static let baseURL = "https://testnets-api.opensea.io"
         static let paginationLimit = 20
+
+        static let rpcBaseURL = "https://rpc.ankr.com/eth"
     }
 
     // MARK: - User
