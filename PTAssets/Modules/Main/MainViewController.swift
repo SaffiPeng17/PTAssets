@@ -105,9 +105,19 @@ private extension MainViewController {
 
         viewModel.output.onShowError
             .drive(onNext: { [weak self] error in
-                // TODO: show error alert
-                print("error =", error)
+                self?.showAlert(with: error)
             }).disposed(by: disposeBag)
+    }
+
+    func showAlert(with error: APIError) {
+        let alert = UIAlertController(title: error.title,
+                                      message: error.message,
+                                      preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
     }
 }
 
