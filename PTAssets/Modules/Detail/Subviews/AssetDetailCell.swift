@@ -32,6 +32,8 @@ extension AssetDetailCell {
         assetImageView.kf.setImage(with: URL(string: asset.imageURL),
                                    placeholder: #imageLiteral(resourceName: "imageIcon"))
         nameLabel.text = asset.name
+        nameLabel.sizeToFit()
+
         descriptionLabel.text = asset.description
         descriptionLabel.sizeToFit()
     }
