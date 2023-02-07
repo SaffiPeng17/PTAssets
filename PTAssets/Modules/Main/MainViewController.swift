@@ -158,9 +158,14 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     // Setup header/footer
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: "header",
-                                                                   for: indexPath)
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                             withReuseIdentifier: "header",
+                                                                             for: indexPath) as! BalanceHeaderView
+            viewModel.output.balance
+                .bind(to: headerView.valueLabel.rx.text)
+                .disposed(by: headerView.disposeBag)
+
+            return headerView
 
         } else if kind == UICollectionView.elementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind,

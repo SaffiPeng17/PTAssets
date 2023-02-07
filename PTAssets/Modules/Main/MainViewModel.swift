@@ -20,11 +20,13 @@ final class MainViewModel: ReactiveCompatible {
     struct Output {
         let onReloadData: Driver<Void>
         let onShowError: Driver<APIError>
+        let balance: Observable<String>
     }
 
     private let loadMoreSubject = PublishSubject<Void>()
     private let reloadDataSubject = PublishSubject<Void>()
     private let showErrorSubject = PublishSubject<APIError>()
+    private let balanceRelay = BehaviorRelay<String>(value: "--")
 
     let input: Input
     let output: Output
@@ -38,9 +40,11 @@ final class MainViewModel: ReactiveCompatible {
         input = Input(onLoadMore: loadMoreSubject.asObserver())
 
         output = Output(onReloadData: reloadDataSubject.asDriver(onErrorDriveWith: .empty()),
-                        onShowError: showErrorSubject.asDriver(onErrorDriveWith: .empty()))
+                        onShowError: showErrorSubject.asDriver(onErrorDriveWith: .empty()),
+                        balance: balanceRelay.asObservable())
 
         getAssetData()
+        getBalance()
         setupBinding()
     }
 }
@@ -60,7 +64,7 @@ private extension MainViewModel {
     }
 }
 
-// MARK: - 🔒 Data source
+// MARK: - 🔒 Asset data source
 private extension MainViewModel {
     func getAssetData() {
         isDataLoading = true
@@ -82,6 +86,23 @@ private extension MainViewModel {
                     owner.showErrorSubject.onNext(error)
                 }
                 owner.isDataLoading = false
+            }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: - 🔒 Balance data source
+private extension MainViewModel {
+    func getBalance() {
+        NetworkManager.getBalance()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let data):
+                    owner.balanceRelay.accept(data.balance)
+                case .failure(let error):
+                    owner.showErrorSubject.onNext(error)
+                }
+
             }).disposed(by: disposeBag)
     }
 }
