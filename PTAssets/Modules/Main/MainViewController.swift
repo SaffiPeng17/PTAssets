@@ -142,7 +142,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                withReuseIdentifier: "footer",
                                                                for: indexPath)
+    }
 
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        guard elementKind == UICollectionView.elementKindSectionFooter else {
+            return
         }
+        viewModel.onLoadMore.onNext(())
     }
 }

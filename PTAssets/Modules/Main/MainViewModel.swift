@@ -29,29 +29,52 @@ final class MainViewModel: ReactiveCompatible {
     fileprivate let updateViewsRelay = PublishSubject<Void>()
     fileprivate let showErrorRelay = PublishSubject<APIError>()
 
+    let onLoadMore = PublishSubject<Void>()
 
     private(set) var assets: [AssetModel] = []
 
+    // for protect not request API more than once
+    private var isDataLoading = false
+
     // MARK: - Initial
     init() {
-        fetchAssetData()
+        getAssetData()
+        setupBinding()
+    }
+
+    private func setupBinding() {
+        onLoadMore
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard !owner.isDataLoading else { return }
+                owner.isDataLoading = true
+                owner.getAssetData()
+            }).disposed(by: disposeBag)
     }
 }
 
 // MARK: - 🔒 Data source
 private extension MainViewModel {
-    func fetchAssetData() {
-        NetworkManager.getAssets(offset: 0)
+    func getAssetData() {
+        isDataLoading = true
+
+        let nextPage = assets.count / AppConfig.API.paginationLimit
+        fetchAssetData(offset: nextPage)
+    }
+
+    func fetchAssetData(offset: Int) {
+        NetworkManager.getAssets(offset: offset)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success(let response):
-                    owner.assets = response.assets
+                    owner.assets += response.assets
                     owner.updateViewsRelay.onNext(())
 
                 case .failure(let error):
                     owner.showErrorRelay.onNext(error)
                 }
+                owner.isDataLoading = false
             }).disposed(by: disposeBag)
     }
 }
