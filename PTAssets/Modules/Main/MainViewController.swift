@@ -36,8 +36,12 @@ final class MainViewController: UIViewController {
             let itemHeight = itemWidth + imageTextSpacing + textHeight
             layout.itemSize = .init(width: itemWidth, height: itemHeight)
 
+            // header size
+            let headerWidth = UIScreen.main.bounds.width - contentInset * 2
+            layout.headerReferenceSize = .init(width: headerWidth, height: 52)
+
             // footer size
-            let footerWidth = itemWidth * 2 + itemHorizontalSpacing
+            let footerWidth = UIScreen.main.bounds.width - contentInset * 2
             layout.footerReferenceSize = .init(width: footerWidth, height: 48)
 
             return layout
@@ -86,6 +90,13 @@ private extension MainViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(AssetListCell.self)
+
+        // header
+        collectionView.register(BalanceHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "header")
+
+        // footer
         collectionView.register(IndicatorFooterView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                 withReuseIdentifier: "footer")
@@ -144,14 +155,20 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
 
-    // Setup footer
+    // Setup header/footer
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionFooter else {
-            return UICollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: "header",
+                                                                   for: indexPath)
+
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: "footer",
+                                                                   for: indexPath)
         }
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                               withReuseIdentifier: "footer",
-                                                               for: indexPath)
+
+        return UICollectionReusableView()
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {

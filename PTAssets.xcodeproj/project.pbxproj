@@ -14,6 +14,7 @@
 		0407B620299169D700BFA021 /* AssetFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B61F299169D700BFA021 /* AssetFooterView.swift */; };
 		0407B6262991991500BFA021 /* IndicatorFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B6252991991500BFA021 /* IndicatorFooterView.swift */; };
 		0407B63229928F3B00BFA021 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B63129928F3B00BFA021 /* BalanceModel.swift */; };
+		0407B6342992A68B00BFA021 /* BalanceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B6332992A68B00BFA021 /* BalanceHeaderView.swift */; };
 		0407B6362992CFBF00BFA021 /* BalanceRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407B6352992CFBF00BFA021 /* BalanceRequests.swift */; };
 		0447A821298D4BD7001FF53F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A820298D4BD7001FF53F /* DetailViewController.swift */; };
 		0447A825298D4C46001FF53F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A824298D4C46001FF53F /* DetailViewModel.swift */; };
@@ -65,6 +66,7 @@
 		0407B61F299169D700BFA021 /* AssetFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetFooterView.swift; sourceTree = "<group>"; };
 		0407B6252991991500BFA021 /* IndicatorFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorFooterView.swift; sourceTree = "<group>"; };
 		0407B63129928F3B00BFA021 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
+		0407B6332992A68B00BFA021 /* BalanceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceHeaderView.swift; sourceTree = "<group>"; };
 		0407B6352992CFBF00BFA021 /* BalanceRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceRequests.swift; sourceTree = "<group>"; };
 		0447A820298D4BD7001FF53F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0447A824298D4C46001FF53F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				0407B5D32990EBF000BFA021 /* AssetListCell.swift */,
+				0407B6332992A68B00BFA021 /* BalanceHeaderView.swift */,
 				0407B6252991991500BFA021 /* IndicatorFooterView.swift */,
 			);
 			path = Subviews;
@@ -578,6 +581,7 @@
 				0407B620299169D700BFA021 /* AssetFooterView.swift in Sources */,
 				0407B6362992CFBF00BFA021 /* BalanceRequests.swift in Sources */,
 				0447A82C298D5F1A001FF53F /* MainCoordinator.swift in Sources */,
+				0407B6342992A68B00BFA021 /* BalanceHeaderView.swift in Sources */,
 				0407B6172991472A00BFA021 /* UITableView+Extension.swift in Sources */,
 				0447A84B298FB4E7001FF53F /* NetworkManager.swift in Sources */,
 				0447A856298FFB8B001FF53F /* AppConfig.swift in Sources */,
