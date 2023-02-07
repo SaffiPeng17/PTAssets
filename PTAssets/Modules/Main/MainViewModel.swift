@@ -45,6 +45,21 @@ final class MainViewModel: ReactiveCompatible {
     }
 }
 
+// MARK: - 🔒 Setups
+private extension MainViewModel {
+    func setupBinding() {
+        loadMoreSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard !owner.isDataLoading else {
+                    return
+                }
+                owner.isDataLoading = true
+                owner.getAssetData()
+            }).disposed(by: disposeBag)
+    }
+}
+
 // MARK: - 🔒 Data source
 private extension MainViewModel {
     func getAssetData() {
@@ -67,18 +82,6 @@ private extension MainViewModel {
                     owner.showErrorSubject.onNext(error)
                 }
                 owner.isDataLoading = false
-            }).disposed(by: disposeBag)
-    }
-
-    func setupBinding() {
-        loadMoreSubject
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                guard !owner.isDataLoading else {
-                    return
-                }
-                owner.isDataLoading = true
-                owner.getAssetData()
             }).disposed(by: disposeBag)
     }
 }

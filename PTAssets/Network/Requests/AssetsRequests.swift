@@ -23,7 +23,7 @@ extension NetworkManager: AssetsRequestsProtocol {
      */
     static func getAssets(offset: Int) -> Observable<APIResult<AssetsResponse>> {
         let address = AppConfig.User.address
-        let limit = AppConfig.API.paginationLimit // how much data in one time
+        let limit = AppConfig.API.paginationLimit // get how much data in one time
         return request(.getAssets(address: address, offset: offset, limit: limit))
     }
 }
