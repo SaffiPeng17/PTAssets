@@ -33,9 +33,15 @@ final class MainViewController: UIViewController {
             layout.minimumInteritemSpacing = itemHorizontalSpacing
             layout.minimumLineSpacing = itemVerticalSpacing
 
-            let width = (UIScreen.main.bounds.width - contentInset * 2 - itemHorizontalSpacing) / 2
-            let height = width + imageTextSpacing + textHeight
-            layout.itemSize = .init(width: width, height: height)
+            // item size
+            let itemWidth = (UIScreen.main.bounds.width - contentInset * 2 - itemHorizontalSpacing) / 2
+            let itemHeight = itemWidth + imageTextSpacing + textHeight
+            layout.itemSize = .init(width: itemWidth, height: itemHeight)
+
+            // footer size
+            let footerWidth = itemWidth * 2 + itemHorizontalSpacing
+            layout.footerReferenceSize = .init(width: footerWidth, height: 48)
+
             return layout
         }
 
@@ -82,6 +88,10 @@ private extension MainViewController {
         view.backgroundColor = .systemBackground
 
         collectionView.register(AssetListCell.self)
+        collectionView.register(IndicatorFooterView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                withReuseIdentifier: "footer")
+
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -105,8 +115,8 @@ private extension MainViewController {
 
 // MARK: - Handle data source
 private extension MainViewController {
-    func makeDataSource() -> UICollectionViewDiffableDataSource<AssetItemSection, AnyHashable> {
-        UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, model in
+    func configureDataSource() {
+        assetDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, model in
             switch model {
             case let item as AssetModel:
                 let cell = collectionView.dequeueReusableCell(AssetListCell.self, for: indexPath)
@@ -122,6 +132,15 @@ private extension MainViewController {
             default:
                 return nil
             }
+        }
+
+        assetDataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionFooter else {
+                return UICollectionReusableView()
+            }
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: "footer",
+                                                                   for: indexPath)
         }
     }
 }
