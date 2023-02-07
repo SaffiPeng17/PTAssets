@@ -15,9 +15,7 @@ final class MainViewController: UIViewController {
 
     // MARK: - Properties
     weak var coordinator: MainCoordinator?
-
     private let viewModel: MainViewModel
-    private var assetDataSource: UICollectionViewDiffableDataSource<AssetItemSection, AnyHashable>!
 
     // MARK: - Subviews
     private var collectionView: UICollectionView = {
@@ -59,8 +57,6 @@ final class MainViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
 
-        assetDataSource = makeDataSource()
-
         setupViews()
         setupBinding()
     }
@@ -87,6 +83,8 @@ private extension MainViewController {
         title = "Asset List"
         view.backgroundColor = .systemBackground
 
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(AssetListCell.self)
         collectionView.register(IndicatorFooterView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
@@ -100,9 +98,9 @@ private extension MainViewController {
     }
 
     func setupBinding() {
-        viewModel.rx.snapshot
-            .drive(onNext: { [weak self] snapshot in
-                self?.assetDataSource.apply(snapshot, animatingDifferences: true)
+        viewModel.rx.onUpdateView
+            .drive(onNext: { [weak self] in
+                self?.collectionView.reloadData()
             }).disposed(by: disposeBag)
 
         viewModel.rx.onShowError
@@ -113,34 +111,38 @@ private extension MainViewController {
     }
 }
 
-// MARK: - Handle data source
-private extension MainViewController {
-    func configureDataSource() {
-        assetDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, model in
-            switch model {
-            case let item as AssetModel:
-                let cell = collectionView.dequeueReusableCell(AssetListCell.self, for: indexPath)
-                cell.configureCell(with: item)
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.assets.count
+    }
 
-                cell.rx.onTap
-                    .drive(onNext: { [weak self] model in
-                        self?.coordinator?.showDetailView(asset: model)
-                    }).disposed(by: cell.disposeBag)
-
-                return cell
-
-            default:
-                return nil
-            }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard indexPath.item < viewModel.assets.count else {
+            return UICollectionViewCell()
         }
 
-        assetDataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            guard kind == UICollectionView.elementKindSectionFooter else {
-                return UICollectionReusableView()
-            }
-            return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: "footer",
-                                                                   for: indexPath)
+        let asset = viewModel.assets[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(AssetListCell.self, for: indexPath)
+        cell.configureCell(with: asset)
+
+        cell.rx.onTap
+            .drive(onNext: { [weak self] model in
+                self?.coordinator?.showDetailView(asset: model)
+            }).disposed(by: cell.disposeBag)
+
+        return cell
+    }
+
+    // Setup footer
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter else {
+            return UICollectionReusableView()
+        }
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                               withReuseIdentifier: "footer",
+                                                               for: indexPath)
+
         }
     }
 }

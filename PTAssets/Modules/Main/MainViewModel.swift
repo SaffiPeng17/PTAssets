@@ -10,12 +10,8 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: MainViewModel {
-    var snapshot: Driver<AssetSnapshot> {
-        base.snapshotRelay.asDriver(onErrorDriveWith: .empty())
-    }
-
-    var isLoading: Driver<Bool> {
-        base.isLoadingRelay.asDriver(onErrorDriveWith: .empty())
+    var onUpdateView: Driver<Void> {
+        base.updateViewsRelay.asDriver(onErrorDriveWith: .empty())
     }
 
     var onShowError: Driver<APIError> {
@@ -30,11 +26,11 @@ final class MainViewModel: ReactiveCompatible {
     private let disposeBag = DisposeBag()
 
     // MARK: - Properties
-    fileprivate let snapshotRelay = BehaviorRelay<AssetSnapshot>(value: AssetSnapshot())
-    fileprivate let isLoadingRelay = PublishRelay<Bool>()
-    fileprivate let showErrorRelay = PublishRelay<APIError>()
+    fileprivate let updateViewsRelay = PublishSubject<Void>()
+    fileprivate let showErrorRelay = PublishSubject<APIError>()
 
-    private var currentAssets: [AssetModel] = []
+
+    private(set) var assets: [AssetModel] = []
 
     // MARK: - Initial
     init() {
@@ -42,7 +38,7 @@ final class MainViewModel: ReactiveCompatible {
     }
 }
 
-// MARK: - 🔒 Private methods
+// MARK: - 🔒 Data source
 private extension MainViewModel {
     func fetchAssetData() {
         NetworkManager.getAssets(offset: 0)
@@ -50,27 +46,12 @@ private extension MainViewModel {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success(let response):
-                    owner.updateSnapshot(assets: response.assets)
+                    owner.assets = response.assets
+                    owner.updateViewsRelay.onNext(())
+
                 case .failure(let error):
-                    owner.showErrorRelay.accept(error)
+                    owner.showErrorRelay.onNext(error)
                 }
             }).disposed(by: disposeBag)
-    }
-
-    func updateSnapshot(assets: [AssetModel]) {
-        isLoadingRelay.accept(false)
-
-        currentAssets += assets
-
-        let snapshot = makeSnapshot(with: currentAssets)
-        snapshotRelay.accept(snapshot)
-    }
-
-    func makeSnapshot(with assets: [AssetModel]) -> AssetSnapshot {
-        var snapshot = AssetSnapshot()
-        snapshot.appendSections(AssetItemSection.allCases)
-        snapshot.appendItems(assets, toSection: .asset)
-
-        return snapshot
     }
 }
