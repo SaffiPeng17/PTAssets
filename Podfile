@@ -12,7 +12,7 @@ target 'PTAssets' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Kingfisher'
-  pod 'SVGKit'
+  pod 'BigInt', '~> 5.2'
 
   target 'PTAssetsTests' do
     inherit! :search_paths
