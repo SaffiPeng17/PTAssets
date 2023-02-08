@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IndicatorFooterView: UICollectionReusableView {
+final class IndicatorFooterView: UICollectionReusableView {
 
     // MARK: - Subviews
     private let indicatorView = UIActivityIndicatorView()

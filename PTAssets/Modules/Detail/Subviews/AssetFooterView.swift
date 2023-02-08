@@ -15,7 +15,7 @@ extension Reactive where Base: AssetFooterView {
     }
 }
 
-class AssetFooterView: UIView {
+final class AssetFooterView: UIView {
 
     // MARK: - Subviews
     fileprivate let goButton = UIButton()

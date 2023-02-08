@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AssetDetailCell: UITableViewCell {
+final class AssetDetailCell: UITableViewCell {
 
     // MARK: - Subviews
     private let bgView = UIView()

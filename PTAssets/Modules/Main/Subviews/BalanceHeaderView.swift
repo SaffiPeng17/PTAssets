@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class BalanceHeaderView: UICollectionReusableView {
+final class BalanceHeaderView: UICollectionReusableView {
     private(set) var disposeBag = DisposeBag()
 
     // MARK: - Subviews

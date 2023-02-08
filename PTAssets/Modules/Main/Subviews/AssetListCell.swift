@@ -18,7 +18,7 @@ extension Reactive where Base: AssetListCell {
     }
 }
 
-class AssetListCell: UICollectionViewCell {
+final class AssetListCell: UICollectionViewCell {
     static let cellID = String(describing: AssetListCell.self)
 
     private(set) var disposeBag = DisposeBag()
