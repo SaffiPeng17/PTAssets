@@ -55,10 +55,7 @@ private extension MainViewModel {
         loadMoreSubject
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                guard !owner.isDataLoading else {
-                    return
-                }
-                owner.isDataLoading = true
+                guard !owner.isDataLoading else { return }
                 owner.getAssetData()
             }).disposed(by: disposeBag)
     }
