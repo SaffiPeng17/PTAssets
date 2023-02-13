@@ -32,7 +32,7 @@ extension BalanceModel {
             hexString = String(hexString.dropFirst(2))
         }
 
-        // parse hexString to decimal
+        // parse hexString to expect balance string
         let bigIntString = BigInt(hexString, radix: 16)?.description
         return bigIntString ?? "--"
     }
