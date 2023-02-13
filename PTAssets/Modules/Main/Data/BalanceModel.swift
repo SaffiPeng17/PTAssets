@@ -13,6 +13,7 @@ struct BalanceModel: Mappable {
     var jsonrpc = ""
     var id = 0
     var result = ""
+    var error: RPCError?
 
     init?(map: ObjectMapper.Map) {}
 
@@ -20,6 +21,19 @@ struct BalanceModel: Mappable {
         jsonrpc <- map["jsonrpc"]
         id <- map["id"]
         result <- map["result"]
+        error <- map["error"]
+    }
+}
+
+struct RPCError: Mappable {
+    var code = 0
+    var message = ""
+
+    init?(map: ObjectMapper.Map) {}
+
+    mutating func mapping(map: ObjectMapper.Map) {
+        code <- map["code"]
+        message <- map["message"]
     }
 }
 

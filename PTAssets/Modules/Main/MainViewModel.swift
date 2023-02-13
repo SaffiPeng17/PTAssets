@@ -95,7 +95,12 @@ private extension MainViewModel {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success(let data):
+                    guard data.error == nil else {
+                        owner.balanceRelay.accept("--")
+                        return
+                    }
                     owner.balanceRelay.accept(data.balance)
+
                 case .failure(let error):
                     owner.showErrorSubject.onNext(error)
                 }
